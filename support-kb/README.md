@@ -47,7 +47,7 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 | [#2](https://github.com/vedhav/mega-s01e03-what-it-shows/issues/2) | `hint`: booking-v3 `MM/DD/YYYY` hint | 33 |
 | [#3](https://github.com/vedhav/mega-s01e03-what-it-shows/issues/3) | `one-day`: one-day shift (time zone / DST) | 5 |
 
-- The page: [`src/routes/kb/incidents/4471/split/+page.svx`](src/routes/kb/incidents/4471/split/+page.svx), signed, desk ref `DR-M7SV-8CCN`.
+- The page: [`src/routes/kb/incidents/4471-split/+page.svx`](src/routes/kb/incidents/4471-split/+page.svx), signed, desk ref `DR-M7SV-8CCN`.
 - Its logic: [`src/lib/kb/problems.ts`](src/lib/kb/problems.ts), [`src/lib/kb/ProblemTable.svelte`](src/lib/kb/ProblemTable.svelte).
-- As the desk sees it: [`desk-view/kb/incidents/4471/split.html`](desk-view/kb/incidents/4471/split.html) and [`desk-view/4471-split.png`](desk-view/4471-split.png).
-- Build it yourself: `npm install && npm run build`, then open `build/kb/incidents/4471/split.html` (or `npm run preview`).
+- As the desk sees it: [`desk-view/kb/incidents/4471-split.html`](desk-view/kb/incidents/4471-split.html) and [`desk-view/4471-split.png`](desk-view/4471-split.png).
+- Build it yourself: `npm install && npm run build`, then open `build/kb/incidents/4471-split.html` (or `npm run preview`).
