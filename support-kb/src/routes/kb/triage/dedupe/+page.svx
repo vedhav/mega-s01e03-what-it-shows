@@ -14,11 +14,6 @@ reviewed: 2024-06-11
 A busy morning brings hundreds of reports about the same thing. We keep one ticket per issue
 and merge every duplicate into it, so engineering sees one thread with a count.
 
-<Callout kind="warn">
-Merging by subject put three problems into #4471 ([#4471 split](/kb/incidents/4471-split)).
-[Decision 0002](/kb/decisions/0002-dedupe-by-cause) proposes merging by cause instead.
-</Callout>
-
 ## The rule
 
 A report is a duplicate when its **subject line matches** the subject of an open ticket

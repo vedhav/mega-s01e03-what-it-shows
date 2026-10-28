@@ -4,5 +4,4 @@ The support desk's kb export, as exported (`support-kb/`), with a page that spli
 
 - The page: [`support-kb/src/routes/kb/incidents/4471-split/+page.svx`](support-kb/src/routes/kb/incidents/4471-split/+page.svx)
 - As the desk sees it: [`support-kb/desk-view/kb/incidents/4471-split.html`](support-kb/desk-view/kb/incidents/4471-split.html), [`support-kb/desk-view/4471-split.png`](support-kb/desk-view/4471-split.png)
-- One page per ticket: [parser](support-kb/src/routes/kb/incidents/4471-parser/+page.svx) · [hint](support-kb/src/routes/kb/incidents/4471-hint/+page.svx) · [one-day](support-kb/src/routes/kb/incidents/4471-one-day/+page.svx), rendered in `support-kb/desk-view/kb/incidents/`
 - Tickets: [issues](https://github.com/vedhav/mega-s01e03-what-it-shows/issues?q=is%3Aissue)
