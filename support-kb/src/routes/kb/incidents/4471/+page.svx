@@ -2,8 +2,8 @@
 layout: runbook
 title: '#4471 · dates parse mm/dd in eu locales'
 owner: support desk
-status: known
-reviewed: 2026-09-30
+status: closed
+reviewed: 2026-10-28
 ---
 
 <script>
@@ -20,6 +20,12 @@ first. The fix is queued.
 
 <Callout>
 Known. One issue, one fix queued.
+</Callout>
+
+<Callout kind="warn">
+Closed 5 October. It was three problems, not one: see [#4471 split](/kb/incidents/4471-split).
+The parser is fixed, the booking-v3 hint won't be (the form is retired), and the one-day shift
+is still open.
 </Callout>
 
 ## What was merged

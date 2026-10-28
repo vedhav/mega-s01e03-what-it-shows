@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../_app/immutable/entry/start.Bs749WCR.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BFKUqgza.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CF9oPuMh.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B7yEsYtO.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.D3XbsqVh.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/D5pEtmhg.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/nJQcIPte.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/WzAjyw7j.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CY1cZ4VT.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.BQPe8qXv.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DqvFVc28.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/4.CHynqd43.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/JVsfc7lO.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BWNaKrEA.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/HziifFYH.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>0002 · Duplicates share a cause, not a subject line · support kb</title>
+		<link href="../../_app/immutable/assets/runbook.BhhgOc_n.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/RenderStamp.CMZ6TBbc.css" rel="stylesheet">
+  </head>
+  <body>
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">0002 · Duplicates share a cause, not a subject line</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Vedha Viyash</b></span> <span class="status proposed svelte-e2jw2j">proposed</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><strong>Date:</strong> 28 October 2026 · <strong>Replaces:</strong> <a href="/kb/decisions/0001-dedupe-by-subject">0001</a> once accepted</p> <h2>Context</h2> <p>Under 0001 the desk merged by subject line. #4471 took 412 reports under subjects such as
+“Wrong day on the invite” and was marked <em>known, one fix queued</em>. It held three problems
+(<a href="/kb/incidents/4471-split">#4471 split</a>); the queued fix closed one of them.</p> <h2>Decision</h2> <p>Two reports are the same issue when they share a cause (<code>causes.ts</code>, tried in <a href="/kb/triage/dedupe">triage</a>): the tenant’s locale and booking form, the channel, and what the
+report says happened. The subject line is a search aid, not a reason to merge.</p> <h2>Consequences</h2> <ul><li>Triage reads the body, not just the subject. Slower per report; far fewer tickets marked known
+while part of them is still broken.</li> <li>A big ticket gets its cause table read before it is marked <em>known</em>.</li> <li>0001 stays as written; this record replaces it once accepted.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-M7SV-8CCN</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_kwflh = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.Bs749WCR.js"),
+						import("../../_app/immutable/entry/app.D3XbsqVh.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 4],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

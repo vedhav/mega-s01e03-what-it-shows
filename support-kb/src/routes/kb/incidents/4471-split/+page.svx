@@ -2,77 +2,69 @@
 layout: runbook
 title: '#4471 split · three problems, not one'
 owner: Vedha Viyash
-status: proposed
+status: living
 reviewed: 2026-10-28
 signature: Vedha Viyash
 ---
 
 <script>
   import ProblemTable from '#lib/kb/ProblemTable.svelte';
-  import CauseTable from '#lib/kb/CauseTable.svelte';
   import Callout from '#lib/kb/Callout.svelte';
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
-  const REPO = 'https://github.com/vedhav/mega-s01e03-what-it-shows/issues';
-  const issues = { parser: `${REPO}/1`, hint: `${REPO}/2`, 'one-day': `${REPO}/3` };
   const what = {
-    parser: 'The shared parser reads every date month first; day-first tenants get day and month swapped.',
-    hint: 'booking-v3 prints MM/DD/YYYY under its date field; people type month first and the form reads it day first.',
+    parser: 'The shared parser read every date month first; day-first tenants got day and month swapped.',
+    hint: 'booking-v3 printed MM/DD/YYYY under its date field; people typed month first and the form read it day first.',
     'one-day': 'The date moves by one day, not a swapped month: across time zones, around a DST change.',
   };
 </script>
 
-The [#4471 page](/kb/incidents/4471) says *known, one issue, one fix queued*. Its own table
-already disagrees: it counts two causes, and a footnote says some reports were filed under
-`parser` although the desk read them as something else. This page splits #4471 by what each
-report says, not by its subject line, and gives every problem its own ticket.
+[#4471](/kb/incidents/4471) merged every date report as one issue, by subject line
+([decision 0001](/kb/decisions/0001-dedupe-by-subject)). Read by cause, its reports are three
+problems. Each has its own ticket.
 
 <Callout kind="warn">
-Fixing the parser closes one of these tickets. The other two keep coming in.
+#4471 is closed, but not everything in it is fixed. The one-day shift is still open.
 </Callout>
 
-## What is in #4471
+## What was in #4471
 
-<ProblemTable ticket={4471} {issues} {what} />
+<ProblemTable ticket={4471} {what} />
 
-Each report is counted once: the ticket export comes in overlapping pages, so some reports
-appear twice under the same id. The count above is by unique id.
-
-## How a report was placed
-
-1. **Is it a one-day move?** The desk read these reports as a date that moved by one day,
-   not a swapped day and month (`desk-notes.json`). They go to `one-day`, whatever their tenant.
-2. **Otherwise, by tenant** (`causes.ts`): a day-first tenant's report that came in through
-   a `booking-v3` form is `hint`; every other one is `parser`.
-
-The subject line and intake's tag decide nothing. Intake tags from the reporter's browser, and
-it is wrong both ways: some `hint` reports are tagged `parser`, and more `parser` reports are
-tagged `hint`.
+Counted the way the desk counts ([#4471](/kb/incidents/4471), *What was merged*): each report
+once by id, filed by its cause. The desk's one-day notes are a problem of their own, so those
+reports also count under `one-day`.
 
 ## The three problems
 
-**`parser`: month-first parser.** "Booked for 2 March. The invite says 3 February." Every day
-and month swap that did not come through a `booking-v3` form. One fix: parse dates in the
-tenant's locale. This is the fix #4471 has queued.
+**`parser`: month-first parser.** "Booked for 2 March. The invite says 3 February." Every
+day/month swap from a day-first tenant that did not come in through a `booking-v3` form.
+Fixed by engineering: *fix(dates): parse dd/mm for eu locales*.
 
-**`hint`: booking-v3 date hint.** Only `form` reports from tenants on `booking-v3`. The form
-tells people to type `MM/DD/YYYY` and then reads the date day first. The parser fix does not
-touch it: the form's hint and its reading have to agree.
+**`hint`: booking-v3 date hint.** Only `form` reports from tenants on `booking-v3`. The form told
+people to type `MM/DD/YYYY` and then read the date day first. The parser fix did not touch it.
+Won't fix: the `booking-v3` form is retired.
 
-**`one-day`: one-day shift.** "Invite says Tuesday 12 May. Calendar says Monday 11 May."
-"Client in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting." "Every booking in
-June is one day off." No month is swapped, so the parser fix does not touch it either. It looks
-like a time zone or DST conversion, and it needs its own investigation.
+**`one-day`: one-day shift.** "Invite says Tuesday 12 May. Calendar says Monday 11 May." "Client
+in Lisbon got Tuesday. Client in Toronto got Monday. Same meeting." "Every booking in June is one
+day off." No month is swapped, so neither fix touches it. It looks like a time zone or DST
+conversion. Still open, and under-reported: one reporter says they have stopped reporting these.
 
-## What the desk sees today, for comparison
+## How to tell them apart
 
-<CauseTable ticket={4471} />
+1. **A date one day off, not swapped?** `one-day`, whatever the tenant
+   (`desk-notes.json`, `oneDayMove`).
+2. **A day-first tenant, through a `booking-v3` form?** `hint`.
+3. **Any other day-first tenant?** `parser`.
+
+The subject line and intake's tag decide nothing: every common subject appears in more than one
+problem, and intake tags from the reporter's browser, not the tenant
+([triage](/kb/triage/dedupe) shows the same with its examples).
 
 ## For the desk
 
-- Merging by subject put all three problems into one ticket ([decision 0001](/kb/decisions/0001-dedupe-by-subject)).
-  Subjects such as "Wrong day on the invite" appear in more than one problem.
-- Before you mark a big ticket *known*, read its cause table. If it shows more than one row,
-  or a footnote, it is more than one ticket.
+- New date reports: a swap is no longer expected after 5 October. Treat one as a regression of
+  the parser fix, and a one-day move as the open `one-day` ticket.
+- Merge by cause, not by subject: [decision 0002](/kb/decisions/0002-dedupe-by-cause).
 
 <RenderStamp {signature} />

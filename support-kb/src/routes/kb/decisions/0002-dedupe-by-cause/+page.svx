@@ -1,0 +1,35 @@
+---
+layout: runbook
+title: '0002 · Duplicates share a cause, not a subject line'
+owner: Vedha Viyash
+status: proposed
+reviewed: 2026-10-28
+signature: Vedha Viyash
+---
+
+<script>
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+**Date:** 28 October 2026 · **Replaces:** [0001](/kb/decisions/0001-dedupe-by-subject) once accepted
+
+## Context
+
+Under 0001 the desk merged by subject line. #4471 took 412 reports under subjects such as
+"Wrong day on the invite" and was marked *known, one fix queued*. It held three problems
+([#4471 split](/kb/incidents/4471-split)); the queued fix closed one of them.
+
+## Decision
+
+Two reports are the same issue when they share a cause (`causes.ts`, tried in
+[triage](/kb/triage/dedupe)): the tenant's locale and booking form, the channel, and what the
+report says happened. The subject line is a search aid, not a reason to merge.
+
+## Consequences
+
+- Triage reads the body, not just the subject. Slower per report; far fewer tickets marked known
+  while part of them is still broken.
+- A big ticket gets its cause table read before it is marked *known*.
+- 0001 stays as written; this record replaces it once accepted.
+
+<RenderStamp {signature} />
