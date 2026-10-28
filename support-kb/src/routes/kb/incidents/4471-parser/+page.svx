@@ -1,0 +1,42 @@
+---
+layout: runbook
+title: '#4471 · parser: month-first date parser'
+owner: Vedha Viyash
+status: fixed
+reviewed: 2026-10-28
+signature: Vedha Viyash
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+One of three problems in [#4471](/kb/incidents/4471) ([the split](/kb/incidents/4471-split)).
+Ticket: [#1](https://github.com/vedhav/mega-s01e03-what-it-shows/issues/1).
+
+<ProblemTable ticket={4471} only="parser" what={{ parser: 'The shared parser read every date month first.' }} />
+
+## What happened
+
+All 11 tenants in #4471 write the day first. The shared parser read every date month first, so
+day and month swapped wherever both are 12 or less:
+
+> Booked for 2 March. The invite says 3 February.
+>
+> The reminder for 12 January arrived for 1 December.
+
+It came in through every channel: the app, email, and `booking-v2` forms, whose hint
+(`DD/MM/YYYY`) matches what the tenant's people type.
+
+## How to recognise it
+
+A day-first tenant, a date with day and month swapped, and not a `booking-v3` form (that is
+[hint](/kb/incidents/4471-hint)).
+
+## State
+
+Fixed by engineering: *fix(dates): parse dd/mm for eu locales*. #4471 closed 5 October. A swap
+reported after that date is a regression of this fix, not a new ticket for #4471.
+
+<RenderStamp {signature} />

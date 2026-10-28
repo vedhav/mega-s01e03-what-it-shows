@@ -1,0 +1,38 @@
+---
+layout: runbook
+title: '#4471 · hint: booking-v3 shows MM/DD/YYYY'
+owner: Vedha Viyash
+status: won't fix
+reviewed: 2026-10-28
+signature: Vedha Viyash
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+One of three problems in [#4471](/kb/incidents/4471) ([the split](/kb/incidents/4471-split)).
+Ticket: [#2](https://github.com/vedhav/mega-s01e03-what-it-shows/issues/2).
+
+<ProblemTable ticket={4471} only="hint" what={{ hint: 'The booking-v3 form hint and its reading disagreed.' }} />
+
+## What happened
+
+The `booking-v3` booking form prints `MM/DD/YYYY` under its date field. People typed the month
+first, as told, and the form read the date in the tenant's day-first order. The swap happened
+in the form, before the parser saw the date, so the parser fix did not touch it.
+
+Only `form` reports from day-first tenants on `booking-v3`: Alder Physio, Copper Studio and
+Pale Harbour. Their app and email reports are [parser](/kb/incidents/4471-parser).
+
+## How to recognise it
+
+Intake can't: it tags from the reporter's browser, and many of these reporters use an `en-US`
+browser. Look at the tenant's form (`booking-v3`) and the channel (`form`).
+
+## State
+
+Won't fix: the `booking-v3` form is retired. #4471 closed 5 October.
+
+<RenderStamp {signature} />

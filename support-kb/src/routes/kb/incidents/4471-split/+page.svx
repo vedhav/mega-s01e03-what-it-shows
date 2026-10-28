@@ -37,6 +37,8 @@ reports also count under `one-day`.
 
 ## The three problems
 
+Each has its own page: [parser](/kb/incidents/4471-parser) · [hint](/kb/incidents/4471-hint) · [one-day](/kb/incidents/4471-one-day).
+
 **`parser`: month-first parser.** "Booked for 2 March. The invite says 3 February." Every
 day/month swap from a day-first tenant that did not come in through a `booking-v3` form.
 Fixed by engineering: *fix(dates): parse dd/mm for eu locales*.
