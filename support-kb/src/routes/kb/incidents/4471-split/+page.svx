@@ -4,7 +4,7 @@ title: '#4471 split · three problems, not one'
 owner: Vedha Viyash
 status: proposed
 reviewed: 2026-10-28
-signature: Vedha Viyash
+signature: 'v1.eyJzdWIiOiIxNzI5IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMTkxMTksImV4cCI6MTc5MzMwNTUxOX0.zNHDdCOOcyawz7U6aX7IQXRnj6o0YYIWchoEtELxt6Y'
 ---
 
 <script>
